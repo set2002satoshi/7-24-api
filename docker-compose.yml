@@ -1,0 +1,12 @@
+version: "3"
+services:
+  golang-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    stdin_open: true
+    volumes: 
+      - ./:/usr/src
+    ports: 
+      - 8000:8080
