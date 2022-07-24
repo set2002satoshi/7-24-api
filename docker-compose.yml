@@ -10,3 +10,13 @@ services:
       - ./:/usr/src
     ports: 
       - 8000:8080
+  golang-db:
+    image: mysql:8.0
+    container_name: db
+    ports: 
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: main
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: pass
