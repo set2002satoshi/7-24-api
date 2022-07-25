@@ -51,3 +51,21 @@ func FindComment(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+func DeleteTarget(c *gin.Context) {
+	Db := db.DbConnect()
+	CommentTable := []model.Comment{}
+	if result := Db.Delete(&CommentTable, c.Query("id")); result.Error != nil {
+		response := map[string]interface{}{
+			"message": "error",
+		}
+		c.JSON(404, response)
+		return 
+	}
+	response := map[string]interface{}{
+		"PostData": CommentTable,
+		"message": "ok", 
+	}
+	c.JSON(200, response)
+
+}
+

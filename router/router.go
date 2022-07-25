@@ -16,7 +16,8 @@ func SetRouter() {
 	v1 := router.Group("/api")
 	{
 		v1.GET("/", controller.FindComment)
-		v1.POST("/createComment", controller.CreateComment)
+		v1.POST("/", controller.CreateComment)
+		v1.DELETE("/", controller.DeleteTarget)
 	}
 
 	router.Run(":8080")
