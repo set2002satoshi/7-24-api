@@ -34,3 +34,20 @@ func CreateComment(c *gin.Context) {
 	c.JSON(201, response)
 }
 
+func FindComment(c *gin.Context) {
+	Db := db.DbConnect()
+	CPost := []model.Comment{}
+	if result := Db.Find(&CPost); result.Error != nil {
+		response := map[string]interface{}{
+			"message": "error",
+		}
+		c.JSON(404, response)
+		return 
+	}
+	response := map[string]interface{}{
+		"PostData": CPost,
+		"message": "ok", 
+	}
+	c.JSON(200, response)
+}
+

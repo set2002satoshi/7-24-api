@@ -15,6 +15,7 @@ func SetRouter() {
 
 	v1 := router.Group("/api")
 	{
+		v1.GET("/", controller.FindComment)
 		v1.POST("/createComment", controller.CreateComment)
 	}
 
