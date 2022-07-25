@@ -5,7 +5,13 @@ import (
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+
+	"github.com/set2002satoshi/7-24-api/model"
 )
+func DBInit() {
+	DB := DbConnect()
+	DB.AutoMigrate(&model.Comment{})
+}
 
 
 func DbConnect() *gorm.DB {
